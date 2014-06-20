@@ -12,7 +12,7 @@ program
 
 
 program
-	.version('0.0.0')
+	.version(require('../package.json').version)
 	.parse(process.argv);
 
 if (program.args.length < 1 ) {
