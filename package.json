@@ -1,0 +1,41 @@
+{
+  "name": "awm",
+  "version": "0.0.0",
+  "description": "Alfred Workflow Manager, using packal.org",
+  "bin": "./bin/awm",
+  "author": {
+    "name": "Jonathan Wiesel",
+    "email": "jonathanwiesel@gmail.com",
+    "url": "http://jonathanwiesel.com"
+  },
+  "homepage": "https://github.com/jonathanwiesel/awm",
+  "keywords":[
+    "awm",
+    "apm",
+    "npm",
+    "alfred",
+    "packal",
+    "workflow",
+    "package",
+    "manager"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanwiesel/awm"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://jonathanwiesel.mit-license.org/"
+  },
+  "bugs": "https://github.com/jonathanwiesel/awm/issues",
+  "dependencies": {
+    "commander": "~2.2.0",
+    "request": "~2.36.0",
+    "xml2js": "~0.4.4"
+  },
+  "engines":{
+    "node": ">=0.10.0"
+  },
+  "os": ["darwin"],
+  "preferGlobal": true
+}

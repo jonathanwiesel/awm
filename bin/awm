@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+'use strict';
+
+var program  = require('commander');
+
+program
+	.on('*', function(name) {
+		console.log('\''+name+'\' is not a known command. See \'awm --help\':');
+		program.outputHelp();
+		process.exit(1);
+	});
+
+
+program
+	.version('0.0.0')
+	.parse(process.argv);
+
+if (program.args.length < 1 ) {
+	console.log('No command specified. See \'awm --help\':');
+	program.outputHelp();
+	process.exit(1);
+}
