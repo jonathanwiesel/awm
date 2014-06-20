@@ -7,4 +7,4 @@ if (!fs.existsSync(awm.config.directory)) {
   fs.mkdirSync(awm.config.directory);
 }
 
-process.exit();
+awm.fetchManifest();
