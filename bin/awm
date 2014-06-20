@@ -3,6 +3,9 @@
 
 var program  = require('commander');
 
+// Commands
+require('../cmds/search.js')(program);
+
 program
 	.on('*', function(name) {
 		console.log('\''+name+'\' is not a known command. See \'awm --help\':');
