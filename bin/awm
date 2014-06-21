@@ -8,7 +8,7 @@ require('../cmds/search.js')(program);
 
 program
 	.on('*', function(name) {
-		console.log('\''+name+'\' is not a known command. See \'awm --help\':');
+		console.warn('\''+name+'\' is not a known command. See \'awm --help\':');
 		program.outputHelp();
 		process.exit(1);
 	});
@@ -19,7 +19,7 @@ program
 	.parse(process.argv);
 
 if (program.args.length < 1 ) {
-	console.log('No command specified. See \'awm --help\':');
+	console.warn('No command specified. See \'awm --help\':');
 	program.outputHelp();
 	process.exit(1);
 }
