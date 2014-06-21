@@ -1,4 +1,3 @@
-var fs = require('fs');
 var awm = require('../lib/awm');
 var _ = require('lodash');
 
@@ -9,14 +8,7 @@ module.exports = function(program) {
 		.description('Search workflows on packal.org')
 		.action(function(keyword){
 
-			fs.readFile(awm.config.manifest, 'utf8', function (err, data) {
-			  if (err) {
-			    console.error(('Couldn\'t read manifest file: ' + err).bold.underline.red);
-			    process.exit(1);
-			  }
-
-			  var workflowList = JSON.parse(data).manifest.workflow;
-
+			awm.readManifest(function (workflowList) {
 				var filtered = _.filter(workflowList, function(workflow){
 					return (workflow.name[0].indexOf(keyword) > -1 || workflow.tags[0].indexOf(keyword) > -1);
 				});
@@ -29,6 +21,7 @@ module.exports = function(program) {
 					});
 				}
 			});
+
 		});
 
 };
