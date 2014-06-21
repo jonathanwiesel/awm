@@ -4,8 +4,8 @@
   "description": "Alfred Workflow Manager, using packal.org",
   "bin": "./bin/awm",
   "scripts":{
-    "postinstall": "scripts/retrieve_list.js",
-    "uninstall": "scripts/cleanup.js"
+    "postinstall": "node scripts/retrieve_list.js",
+    "uninstall": "node scripts/cleanup.js"
   },
   "author": {
     "name": "Jonathan Wiesel",
