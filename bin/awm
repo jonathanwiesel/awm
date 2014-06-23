@@ -5,6 +5,7 @@ var program  = require('commander');
 
 // Commands
 require('../cmds/search.js')(program);
+require('../cmds/info.js')(program);
 
 program
 	.on('*', function(name) {
