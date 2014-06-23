@@ -10,14 +10,14 @@ module.exports = function(program) {
 
 			awm.readManifest(function (workflowList) {
 				var filtered = _.filter(workflowList, function(workflow){
-					return (workflow.name[0].indexOf(keyword) > -1 || workflow.tags[0].indexOf(keyword) > -1);
+					return (workflow.name.indexOf(keyword) > -1 || workflow.tags.indexOf(keyword) > -1);
 				});
 
 				if(filtered.length === 0) console.warn(('No worklflow found with the keyword ' + keyword.inverse).yellow);
 				else{
 					console.info('Workflows found: \n'.bold.cyan);
-					filtered.forEach(function(wf){
-						console.info(wf.bundle[0].cyan + ' -> ' + wf.name[0]);
+					_(filtered).each(function(wf){
+						console.info(wf.bundle.cyan + ' -> ' + wf.name);
 					});
 				}
 			});
