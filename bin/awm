@@ -6,6 +6,8 @@ var program  = require('commander');
 // Commands
 require('../cmds/search.js')(program);
 require('../cmds/info.js')(program);
+require('../cmds/download.js')(program);
+require('../cmds/reset.js')(program);
 
 program
 	.on('*', function(name) {
