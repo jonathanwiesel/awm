@@ -7,4 +7,6 @@ if (!fs.existsSync(awm.config.directory)) {
   fs.mkdirSync(awm.config.directory);
 }
 
-awm.fetchManifest();
+awm.fetchAndParseManifest(function(jsManifest){
+  awm.writeManifest(jsManifest);
+});

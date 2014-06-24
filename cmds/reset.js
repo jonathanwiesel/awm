@@ -6,7 +6,9 @@ module.exports = function(program) {
     .command('reset')
     .description('Reset the manifest file from packal.org')
     .action(function(){
-      awm.fetchManifest();
+      awm.fetchAndParseManifest(function(jsManifest){
+        awm.writeManifest(jsManifest);
+      });
     });
 
 };
