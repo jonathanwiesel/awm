@@ -2,6 +2,7 @@ var awm = require('../lib/awm');
 var fs = require('fs');
 var _ = require('lodash');
 var request = require('request');
+var path = require('path');
 
 module.exports = function(program) {
 
@@ -21,10 +22,12 @@ module.exports = function(program) {
           var downloadDir = options.directory || process.env.HOME + "/Downloads/";
           var downloadUrl = awm.config.packalUrl + selectedWF.bundle + '/' + selectedWF.file;
 
-          var downloadDirClean = downloadDir.replace("~", process.env.HOME);
+          downloadDir = downloadDir.replace("~", process.env.HOME);
+          downloadDir = path.normalize(downloadDir);
+          if(downloadDir.slice(-1) != '/') downloadDir += '/';
 
-          console.info(('Downloading ' + selectedWF.name + ' to ' + downloadDirClean + selectedWF.file).cyan);
-          request(downloadUrl).pipe(fs.createWriteStream(downloadDirClean + selectedWF.file))
+          console.info(('Downloading ' + selectedWF.name + ' to ' + path.resolve(downloadDir) + '/' + selectedWF.file).cyan);
+          request(downloadUrl).pipe(fs.createWriteStream(downloadDir + selectedWF.file));
         }
       });
     });
