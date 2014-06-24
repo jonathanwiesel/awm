@@ -27,28 +27,28 @@ module.exports = function(program) {
 					if(selectedWF.categories.length > 0){
 						console.info('Categories: ');
 						_(selectedWF.categories).each(function(cat){
-							console.info(cat.cyan);
+							console.info(('* ' + cat).cyan);
 						}).join(', ');
 					}
 
 					if(selectedWF.osx.length > 0){
 						console.info('Compatibility: ');
 						_(selectedWF.osx).each(function(os){
-							console.info(os.cyan);
+							console.info(('* ' + os).cyan);
 						}).join(', ');
 					}
 
 					if(selectedWF.webservices.length > 0){
 						console.info('Webservices: ');
 						_(selectedWF.webservices).each(function(webs){
-							console.info(webs.cyan);
+							console.info(('* ' + webs).cyan);
 						}).join(', ');
 					}
 
 					if(selectedWF.applications.length > 0){
 						console.info('Dependent Apps: ');
 						_(selectedWF.applications).each(function(apps){
-							console.info(apps.cyan);
+							console.info(('* ' + apps).cyan);
 						}).join(', ');
 					}
 
