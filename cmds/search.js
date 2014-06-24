@@ -5,12 +5,12 @@ module.exports = function(program) {
 
 	program
 		.command('search <keyword>')
-		.description('Search workflows on packal.org')
+		.description('Search workflows by keyword')
 		.action(function(keyword){
 
 			awm.readManifest(function (workflowList) {
 				var filtered = _.filter(workflowList, function(workflow){
-					return (workflow.name.indexOf(keyword) > -1 || workflow.tags.indexOf(keyword) > -1);
+					return (workflow.name.indexOf(keyword) > -1 || (_.filter(workflow.tags, function(tag) { return tag.indexOf(keyword) > -1; } )).length > 0 || workflow.bundle.indexOf(keyword) > -1);
 				});
 
 				if(filtered.length === 0) console.warn(('No worklflow found with the keyword ' + keyword.inverse).yellow);

@@ -7,10 +7,10 @@ var path = require('path');
 module.exports = function(program) {
 
   program
-    .command('download <workflow>')
+    .command('download <bundleID>')
     .description('Download specified workflow')
     .option('-d, --directory <path>', 'Download directory')
-    .action(function(workflow, options){
+    .action(function(bundleID, options){
 
       awm.readManifest(function (workflowList) {
         var selectedWF = _.find(workflowList, function(wf){
