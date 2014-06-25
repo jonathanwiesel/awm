@@ -8,7 +8,7 @@ module.exports = function(program) {
 
   program
     .command('download <bundleID>')
-    .description('Download specified workflow')
+    .description('  Download specified workflow')
     .option('-d, --directory <path>', 'Download directory')
     .action(function(bundleID, options){
 
