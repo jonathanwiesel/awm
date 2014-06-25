@@ -1,8 +1,7 @@
 'use strict';
 
 var awm = require('../lib/awm');
-var fs = require('fs');
+var fs = require('fs-extra');
 
-fs.unlinkSync(awm.config.manifest);
-fs.rmdirSync(awm.config.directory);
+fs.removeSync(awm.config.directory);
 process.exit();
