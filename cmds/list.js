@@ -7,7 +7,7 @@ module.exports = function(program) {
 
   program
     .command('list')
-    .description('         List installed workflows.')
+    .description('List installed workflows.')
     .action(function(){
 
       fs.readdir(awm.config.workflowDir, function(err, dirList){

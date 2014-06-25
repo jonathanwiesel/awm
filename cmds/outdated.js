@@ -9,7 +9,7 @@ module.exports = function(program) {
 
   program
     .command('outdated')
-    .description('         List outdated workflows.')
+    .description('List outdated workflows.')
     .action(function(){
 
       fs.readdir(awm.config.workflowDir, function(err, dirList){

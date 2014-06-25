@@ -5,7 +5,7 @@ module.exports = function(program) {
 
 	program
 		.command('info <workflow>')
-		.description('	    Workflow general information')
+		.description('Workflow general information')
 		.action(function(workflow){
 
 			awm.readManifest(function (workflowList) {
