@@ -5,7 +5,7 @@ module.exports = function(program) {
 
   program
     .command('update')
-    .description('Update the manifest file from packal.org')
+    .description('Update the manifest file from packal.org.')
     .action(function(){
       awm.fetchAndParseManifest(function(remoteJsManifest){
         awm.readManifest(function(localwfList){

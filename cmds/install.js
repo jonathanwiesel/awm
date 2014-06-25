@@ -10,7 +10,7 @@ module.exports = function(program) {
 
   program
     .command('install <bundleID>')
-    .description('Install specified workflow')
+    .description('Install specified workflow.')
     .action(function(bundleID, options){
 
       awm.readManifest(function (workflowList) {

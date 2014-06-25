@@ -5,7 +5,7 @@ module.exports = function(program) {
 
 	program
 		.command('search <keyword>')
-		.description('Search workflows by keyword')
+		.description('Search workflows by keyword.')
 		.action(function(keyword){
 
 			awm.readManifest(function (workflowList) {
