@@ -22,6 +22,7 @@ Usage: awm [options] [command]
 
     search <keyword>       Search workflows by keyword
     info <bundleID>        Workflow general information
+    home <bundleID>        Opens the workflow's Packal URL.
     list                   List installed workflows.
     outdated               List outdated workflows.
     install <bundleID>     Install specified workflow
