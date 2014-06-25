@@ -14,7 +14,7 @@ module.exports = function(program) {
 
       awm.readManifest(function (workflowList) {
         var selectedWF = _.find(workflowList, function(wf){
-          return (wf.bundle == workflow);
+          return (wf.bundle == bundleID);
         });
 
         if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + workflow.inverse).yellow);
