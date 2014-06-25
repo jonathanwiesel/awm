@@ -1,7 +1,7 @@
 awm
 =============
 
-Alfred Workflow Manager, using packal.org
+Alfred Workflow Manager, using [packal.org](http://packal.org) by [Shawn Patrick Rice](https://github.com/shawnrice)
 
 # Install
 
@@ -21,7 +21,7 @@ Usage: awm [options] [command]
   Commands:
 
     search <keyword>       Search workflows by keyword
-    info <workflow>        Workflow general information
+    info <bundleID>        Workflow general information
     list                   List installed workflows.
     outdated               List outdated workflows.
     install <bundleID>     Install specified workflow
@@ -34,6 +34,14 @@ Usage: awm [options] [command]
     -h, --help     output usage information
     -V, --version  output the version number
 ```
+
+# Todo
+
+* Add tests
+* Support real install workflow (not download and open).
+* Support upgrade workflows.
+* Support remove workflows.
+* Support `bundle` installing.
 
 # License
 

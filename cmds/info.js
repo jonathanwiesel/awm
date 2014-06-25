@@ -4,16 +4,16 @@ var _ = require('lodash');
 module.exports = function(program) {
 
 	program
-		.command('info <workflow>')
+		.command('info <bundleID>')
 		.description('Workflow general information.')
-		.action(function(workflow){
+		.action(function(bundleID){
 
 			awm.readManifest(function (workflowList) {
 				var selectedWF = _.find(workflowList, function(wf){
-					return (wf.bundle == workflow);
+					return (wf.bundle == bundleID);
 				});
 
-				if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + workflow.inverse).yellow);
+				if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + bundleID.inverse).yellow);
 				else{
 
 					console.info('Name: ' + selectedWF.name.cyan);
