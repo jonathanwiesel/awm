@@ -24,30 +24,42 @@ module.exports = function(program) {
           var downloadUrl = awm.config.packalUrl + selectedWF.bundle + '/' + selectedWF.file;
           var filePath = awm.config.cacheDir + path.basename(selectedWF.file, '.alfredworkflow') + '@' + selectedWF.version + '.alfredworkflow'
 
-          var req = request(downloadUrl);
-          var bar;
+          fs.exists(filePath, function(exists){
+            if(exists){
 
-          req
-            .on('data', function(chunk){
-              bar = bar || new ProgressBar('Downloading... [:bar] :percent :etas', {
-                complete: '=',
-                incomplete: ' ',
-                width: 30,
-                total: parseInt(req.response.headers['content-length'])
-              });
+              console.info(('Workflow cached at ' + filePath).cyan);
+              exec('open ' + filePath.replace(/"/g, '\\\"'));
 
-              bar.tick(chunk.length);
-            })
-            .pipe(fs.createWriteStream(filePath))
-            .on('close', function (err) {
-              if(err) console.error(('Error downloading file: ' + e).red)
-              else {
-                console.info(('Saved to ' + filePath).cyan);
-                exec('open ' + filePath.replace(/"/g, '\\\"'));
-              }
+            }else{
 
-              bar.tick(bar.total - bar.curr);
-            });
+              var req = request(downloadUrl);
+              var bar;
+
+              req
+                .on('data', function(chunk){
+                  bar = bar || new ProgressBar('Downloading... [:bar] :percent :etas', {
+                    complete: '=',
+                    incomplete: ' ',
+                    width: 30,
+                    total: parseInt(req.response.headers['content-length'])
+                  });
+
+                  bar.tick(chunk.length);
+                })
+                .pipe(fs.createWriteStream(filePath))
+                .on('close', function (err) {
+                  if(err) console.error(('Error downloading file: ' + e).red)
+                  else {
+                    console.info(('Saved to ' + filePath).cyan);
+                    exec('open ' + filePath.replace(/"/g, '\\\"'));
+                  }
+
+                  bar.tick(bar.total - bar.curr);
+                });
+            }
+          });
+
+
         }
       });
     });
