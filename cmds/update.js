@@ -16,6 +16,7 @@ module.exports = function(program) {
               console.info(iteratingWf.bundle + ' => ' + iteratingWf.name +  '. (' + iteratingWf.version + ') -> ' + wf.version.green )
             }
           });
+          
           awm.writeManifest(remoteJsManifest);
         });
       });
