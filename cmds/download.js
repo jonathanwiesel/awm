@@ -3,6 +3,8 @@ var fs = require('fs');
 var _ = require('lodash');
 var request = require('request');
 var path = require('path');
+var ProgressBar = require('progress');
+
 
 module.exports = function(program) {
 
@@ -26,8 +28,28 @@ module.exports = function(program) {
           downloadDir = path.normalize(downloadDir);
           if(downloadDir.slice(-1) != '/') downloadDir += '/';
 
-          console.info(('Downloading ' + selectedWF.name + ' to ' + path.resolve(downloadDir) + '/' + selectedWF.file).cyan);
-          request(downloadUrl).pipe(fs.createWriteStream(downloadDir + selectedWF.file));
+
+          var req = request(downloadUrl);
+          var bar;
+
+          req
+            .on('data', function(chunk){
+              bar = bar || new ProgressBar('Downloading... [:bar] :percent :etas', {
+                complete: '=',
+                incomplete: ' ',
+                width: 30,
+                total: parseInt(req.response.headers['content-length'])
+              });
+
+              bar.tick(chunk.length);
+            })
+            .pipe(fs.createWriteStream(downloadDir + selectedWF.file))
+            .on('close', function (err) {
+              if(err) console.error(('Error downloading file: ' + e).red)
+              else console.info(('Saved to ' + path.resolve(downloadDir) + '/' + selectedWF.file).cyan);
+
+              bar.tick(bar.total - bar.curr);
+            });
         }
       });
     });
