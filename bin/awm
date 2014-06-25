@@ -8,7 +8,7 @@ require('../cmds/search.js')(program);
 require('../cmds/info.js')(program);
 require('../cmds/list.js')(program);
 require('../cmds/outdated.js')(program);
-require('../cmds/download.js')(program);
+require('../cmds/install.js')(program);
 require('../cmds/update.js')(program);
 require('../cmds/reset.js')(program);
 

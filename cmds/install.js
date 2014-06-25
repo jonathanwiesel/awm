@@ -4,14 +4,13 @@ var _ = require('lodash');
 var request = require('request');
 var path = require('path');
 var ProgressBar = require('progress');
-
+var exec = require('child_process').exec
 
 module.exports = function(program) {
 
   program
-    .command('download <bundleID>')
-    .description('  Download specified workflow')
-    .option('-d, --directory <path>', 'Download directory')
+    .command('install <bundleID>')
+    .description('Install specified workflow')
     .action(function(bundleID, options){
 
       awm.readManifest(function (workflowList) {
@@ -21,13 +20,9 @@ module.exports = function(program) {
 
         if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + workflow.inverse).yellow);
         else{
-          var downloadDir = options.directory || process.env.HOME + "/Downloads/";
+
           var downloadUrl = awm.config.packalUrl + selectedWF.bundle + '/' + selectedWF.file;
-
-          downloadDir = downloadDir.replace("~", process.env.HOME);
-          downloadDir = path.normalize(downloadDir);
-          if(downloadDir.slice(-1) != '/') downloadDir += '/';
-
+          var filePath = awm.config.cacheDir + path.basename(selectedWF.file, '.alfredworkflow') + '@' + selectedWF.version + '.alfredworkflow'
 
           var req = request(downloadUrl);
           var bar;
@@ -43,10 +38,13 @@ module.exports = function(program) {
 
               bar.tick(chunk.length);
             })
-            .pipe(fs.createWriteStream(downloadDir + selectedWF.file))
+            .pipe(fs.createWriteStream(filePath))
             .on('close', function (err) {
               if(err) console.error(('Error downloading file: ' + e).red)
-              else console.info(('Saved to ' + path.resolve(downloadDir) + '/' + selectedWF.file).cyan);
+              else {
+                console.info(('Saved to ' + filePath).cyan);
+                exec('open ' + filePath.replace(/"/g, '\\\"'));
+              }
 
               bar.tick(bar.total - bar.curr);
             });
