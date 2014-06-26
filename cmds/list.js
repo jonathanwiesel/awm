@@ -18,12 +18,21 @@ module.exports = function(program) {
 
         _(dirList).each(function(dir){
 
-          var plistFile = awm.config.workflowDir + dir + '/info.plist';
-          var settings = plist.parse(fs.readFileSync(plistFile, 'utf8'));
+          fs.lstat(awm.config.workflowDir + dir, function(err, stats){
 
-          fs.exists(awm.config.workflowDir + dir + '/packal/', function(exists){
-            if(exists) console.info((settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name);
-            else console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by packal)'.yellow);
+            if(err) console.error(('Error getting file status'));
+            else if(stats.isDirectory()){
+
+              var plistFile = awm.config.workflowDir + dir + '/info.plist';
+              var settings = plist.parse(fs.readFileSync(plistFile, 'utf8'));
+
+              fs.exists(awm.config.workflowDir + dir + '/packal/', function(exists){
+                if(exists)
+                  console.info((settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name);
+                else
+                  console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by packal)'.yellow);
+              });
+            }
           });
         });
       });
