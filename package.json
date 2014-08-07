@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Alfred Workflow Manager, using packal.org",
   "bin": "./bin/awm",
-  "scripts":{
+  "scripts": {
     "postinstall": "node scripts/init.js",
     "uninstall": "node scripts/cleanup.js"
   },
@@ -13,7 +13,7 @@
     "url": "http://jonathanwiesel.com"
   },
   "homepage": "https://github.com/jonathanwiesel/awm",
-  "keywords":[
+  "keywords": [
     "awm",
     "apm",
     "npm",
@@ -33,8 +33,9 @@
   },
   "bugs": "https://github.com/jonathanwiesel/awm/issues",
   "dependencies": {
+    "async": "^0.9.0",
     "colors": "~0.6.2",
-    "commander": "~2.2.0",
+    "commander": "~2.3.0",
     "fs-extra": "~0.9.1",
     "lodash": "~2.4.1",
     "plist": "~1.0.0",
@@ -42,9 +43,11 @@
     "request": "~2.36.0",
     "xml2js": "~0.4.4"
   },
-  "engines":{
+  "engines": {
     "node": ">=0.10.0"
   },
-  "os": ["darwin"],
+  "os": [
+    "darwin"
+  ],
   "preferGlobal": true
 }
