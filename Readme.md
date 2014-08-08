@@ -41,7 +41,7 @@ Usage: awm [options] [command]
 * Add tests
 * Support real install workflow (not download and open).
 * Support upgrade workflows.
-* Support remove workflows.
+* ~~Support remove workflows.~~
 * Support `bundle` installing.
 
 # License

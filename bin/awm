@@ -11,6 +11,7 @@ require('../cmds/list.js')(program);
 require('../cmds/outdated.js')(program);
 require('../cmds/install.js')(program);
 require('../cmds/update.js')(program);
+require('../cmds/remove.js')(program);
 require('../cmds/cleanup.js')(program);
 require('../cmds/reset.js')(program);
 
