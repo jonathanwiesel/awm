@@ -52,6 +52,12 @@ module.exports = function(program) {
 						});
 					}
 
+					awm.getWorkflowDir(selectedWF.bundle, function(dir){
+						console.info();
+						if(!dir) console.info('Not installed'.red);
+						else console.info('Already installed'.green);
+					});
+
 				}
 			});
 		});
