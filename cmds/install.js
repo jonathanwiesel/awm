@@ -1,6 +1,5 @@
 var awm = require('../lib/awm');
 var _ = require('lodash');
-var path = require('path');
 var exec = require('child_process').exec;
 
 module.exports = function(program) {
@@ -21,10 +20,7 @@ module.exports = function(program) {
           awm.getWorkflowDir(selectedWF.bundle, function(dir){
             if(dir) console.info((bundleID.inverse + ' is already installed').yellow);
             else{
-              var downloadUrl = awm.config.packalUrl + selectedWF.bundle + '/' + selectedWF.file;
-              var filePath = awm.config.cacheDir + path.basename(selectedWF.file, '.alfredworkflow') + '@' + selectedWF.version + '.alfredworkflow';
-
-              awm.downloadFile(downloadUrl, filePath, function(err){
+              awm.downloadFile(selectedWF, function(err, filePath){
                 if(!err) exec('open ' + filePath.replace(/"/g, '\\\"'));
               });
             }
