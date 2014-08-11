@@ -14,7 +14,7 @@ module.exports = function(program) {
           return (wf.bundle == bundleID);
         });
 
-        if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + workflow.inverse).yellow);
+        if(!selectedWF) console.warn(('There\'s no workflow with bundle ID ' + bundleID.inverse + ' according to the manifest').yellow);
         else{
 
           awm.getWorkflowDir(selectedWF.bundle, function(dir){
