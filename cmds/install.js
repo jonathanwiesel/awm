@@ -22,6 +22,7 @@ module.exports = function(program) {
             else{
               awm.downloadFile(selectedWF, function(err, filePath){
                 if(!err) exec('open ' + filePath.replace(/"/g, '\\\"'));
+                else console.error(err.bold.underline.red);
               });
             }
           });
