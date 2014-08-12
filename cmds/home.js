@@ -18,7 +18,7 @@ module.exports = function(program) {
           });
 
           if(!selectedWF)
-            console.warn(('There\'s no workflow with bundle ID ' + bundleID.inverse).yellow);
+            console.warn(('There\'s no workflow with bundle ID ' + bundleID.inverse).yellow + ' according to the manifest');
           else
             exec('open ' + selectedWF.url.replace(/"/g, '\\\"'));
         });
