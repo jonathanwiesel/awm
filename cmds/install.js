@@ -21,7 +21,7 @@ module.exports = function(program) {
             if(dir) console.info((bundleID.inverse + ' is already installed').yellow);
             else{
               awm.downloadFile(selectedWF, function(err, filePath){
-                if(!err) exec('open ' + filePath.replace(/"/g, '\\\"'));
+                if(!err) exec('open "' + filePath + '"');
                 else console.error(err.bold.underline.red);
               });
             }
