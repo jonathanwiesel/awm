@@ -30,7 +30,7 @@ module.exports = function(program) {
                 if(exists)
                   console.info((settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name);
                 else
-                  console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by packal)'.yellow);
+                  console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by Packal)'.yellow);
               });
             }
           });
