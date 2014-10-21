@@ -42,10 +42,13 @@ Usage: awm [options] [command]
 # Todo
 
 * Add tests
-* Support real install workflow (not download and open).
-* Support upgrade workflows.
+* Support *real* install workflow (not download and open `.alfredworkflow` file).
+* Support *real* upgrade workflows (not download and open `.alfredworkflow` file).
+* Support upgrade ALL outdated.
 * ~~Support remove workflows.~~
 * Support `bundle` installing.
+
+Note: one thing to consider when implementing *real* install and update is the previous stripping and migration of hotkeys and keywords.
 
 # License
 
