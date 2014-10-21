@@ -50,6 +50,33 @@ Usage: awm [options] [command]
 
 Note: one thing to consider when implementing *real* install and update is the previous stripping and migration of hotkeys and keywords.
 
+# Development
+
+Pull requests are happily accepted. I have little time to finish the TODO list for the moment.
+
+To link the `awm` command for development you'll need to clone this project:
+
+```sh
+$ git clone https://github.com/jonathanwiesel/awm
+```
+
+Then make `npm` link the `awm` command to the local project destination:
+
+```sh
+$ cd awm
+awm$ npm link
+```
+
+This way you can invoke the `awm` command in the shell reflecting your local work.
+
+If you wish to unlink from the local project:
+
+```sh
+$ npm r awm -g
+```
+
+> I know, `unlink` should do the trick but no. (https://github.com/npm/npm/issues/4005)
+
 # License
 
 Copyright (c) 2014 Jonathan Wiesel
