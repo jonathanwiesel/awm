@@ -22,11 +22,13 @@ Usage: awm [options] [command]
 
     search <keyword>       Search workflows by keyword.
     info <bundleID>        Workflow general information.
+    open <bundleID>        Open specified workflow's directory.
     home [bundleID]        Opens the workflow's Packal URL. Or Packal home if none specified.
     list                   List installed workflows.
     outdated               List outdated workflows.
     install <bundleID>     Install specified workflow.
     update                 Update the manifest file from packal.org.
+    upgrade [bundleID]     Upgrade the specified package or all outdated ones if none specified.
     remove <bundleID>      Remove specified workflow.
     cleanup                Remove all cached downloads.
     reset                  Reset the manifest file from packal.org.
