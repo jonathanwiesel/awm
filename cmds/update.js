@@ -10,12 +10,22 @@ module.exports = function(program) {
       awm.fetchAndParseManifest(function(remoteJsManifest){
         awm.readManifest(function(localwfList){
 
+          var newWorkflows = [];
+
           _(remoteJsManifest.manifest.workflow).each(function(wf){
             var iteratingWf = _.find(localwfList, {bundle: wf.bundle});
-            if(iteratingWf.version < wf.version){
-              console.info(iteratingWf.bundle + ' => ' + iteratingWf.name +  '. (' + iteratingWf.version + ') -> ' + wf.version.green )
-            }
+            if(iteratingWf === undefined)
+              newWorkflows.push(wf);
+            else if(iteratingWf.version < wf.version)
+              console.info(iteratingWf.bundle + ' => ' + iteratingWf.name +  '. (' + iteratingWf.version + ') -> ' + wf.version.green);
           });
+
+          if(newWorkflows.length > 0){
+            console.info('\nNew workflows added:\n'.bold.cyan);
+            _(newWorkflows).each(function(wf){
+              console.info(wf.bundle + ' => ' + wf.name);
+            });
+          }
 
           awm.writeManifest(remoteJsManifest);
         });
