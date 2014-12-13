@@ -54,10 +54,10 @@ Note: one thing to consider when implementing *real* install and update is the p
 
 Pull requests are happily accepted. I have little time to finish the TODO list for the moment.
 
-To link the `awm` command for development you'll need to clone this project:
+To link the `awm` command for development you'll need to fork and clone this project:
 
 ```sh
-$ git clone https://github.com/jonathanwiesel/awm
+$ git clone https://github.com/<your-github-username>/awm
 ```
 
 Then make `npm` link the `awm` command to the local project destination:
