@@ -10,29 +10,32 @@ module.exports = function(program) {
     .description('List installed workflows.')
     .action(function(){
 
-      fs.readdir(awm.config.workflowDir, function(err, dirList){
-        if(err){
-          console.error(('Error listing workflows directory: ' + err).red);
-          process.exit(1);
-        }
+      awm.config.getAlfredPreference(function(workflowDir){
 
-        _(dirList).each(function(dir){
+        fs.readdir(workflowDir, function(err, dirList){
+          if(err){
+            console.error(('Error listing workflows directory: ' + err).red);
+            process.exit(1);
+          }
 
-          fs.lstat(awm.config.workflowDir + dir, function(err, stats){
+          _(dirList).each(function(dir){
 
-            if(err) console.error(('Error getting file status'));
-            else if(stats.isDirectory()){
+            fs.lstat(workflowDir + dir, function(err, stats){
 
-              var plistFile = awm.config.workflowDir + dir + '/info.plist';
-              var settings = plist.parse(fs.readFileSync(plistFile, 'utf8'));
+              if(err) console.error(('Error getting file status'.red));
+              else if(stats.isDirectory()){
 
-              fs.exists(awm.config.workflowDir + dir + '/packal/', function(exists){
-                if(exists)
-                  console.info((settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name);
-                else
-                  console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by Packal)'.yellow);
-              });
-            }
+                var plistFile = workflowDir + dir + '/info.plist';
+                var settings = plist.parse(fs.readFileSync(plistFile, 'utf8'));
+
+                fs.exists(workflowDir + dir + '/packal/', function(exists){
+                  if(exists)
+                    console.info((settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name);
+                  else
+                    console.info('*'.yellow + (settings.bundleid || 'NO-BUNDLE-ID') + ' => ' + settings.name + ' (Not managed by Packal)'.yellow);
+                });
+              }
+            });
           });
         });
       });
