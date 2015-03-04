@@ -1,4 +1,4 @@
-awm
+awm [![npmV]][npmUrl] [![npmDown]][npmUrl]
 =============
 
 Alfred Workflow Manager, using [packal.org](http://packal.org) by [Shawn Patrick Rice](https://github.com/shawnrice)
@@ -82,3 +82,7 @@ $ npm r awm -g
 Copyright (c) 2014 Jonathan Wiesel
 
 [MIT License](http://jonathanwiesel.mit-license.org/)
+
+[npmV]: https://img.shields.io/npm/v/awm.svg
+[npmDown]: https://img.shields.io/npm/dm/awm.svg
+[npmUrl]: https://www.npmjs.com/package/awm
