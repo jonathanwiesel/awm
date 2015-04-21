@@ -4,6 +4,7 @@ var AdmZip = require('adm-zip');
 var plist = require('plist');
 var fs = require('fs-extra');
 var async = require('async');
+var exec = require('child_process').exec;
 
 module.exports = function(program) {
 

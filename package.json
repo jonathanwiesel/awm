@@ -1,6 +1,6 @@
 {
   "name": "awm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Alfred Workflow Manager, using packal.org",
   "bin": "./bin/awm",
   "scripts": {
