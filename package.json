@@ -41,7 +41,7 @@
     "lodash": "~2.4.1",
     "plist": "~1.0.0",
     "progress": "~1.1.6",
-    "request": "~2.36.0",
+    "request": "^2.79.0",
     "xml2js": "~0.4.4"
   },
   "engines": {
