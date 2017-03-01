@@ -1,7 +1,6 @@
 var awm = require('../lib/awm');
 var _ = require('lodash');
 var AdmZip = require('adm-zip');
-var plist = require('plist');
 var fs = require('fs-extra');
 var async = require('async');
 var exec = require('child_process').exec;
@@ -32,8 +31,8 @@ module.exports = function(program) {
               else{
 
                 var outdated = awm.getOutdated(function(packages){
-                  var outdatedBundles = _.pluck(packages, 'bundle');
-                  if(!_.contains(outdatedBundles, bundleID))
+                  var outdatedBundles = _.map(packages, 'bundle');
+                  if(!_.includes(outdatedBundles, bundleID))
                     console.info('Workflow is at it\'s lastest version');
                   else{
                     awm.downloadFile(selectedWF, function(err, filePath){
