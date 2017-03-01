@@ -86,3 +86,7 @@ Copyright (c) 2014 Jonathan Wiesel
 [npmV]: https://img.shields.io/npm/v/awm.svg
 [npmDown]: https://img.shields.io/npm/dm/awm.svg
 [npmUrl]: https://www.npmjs.com/package/awm
+
+# Contributors :heart:
+
+* [claui](https://github.com/claui)
