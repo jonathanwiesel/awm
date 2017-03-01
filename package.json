@@ -27,10 +27,7 @@
     "type": "git",
     "url": "https://github.com/jonathanwiesel/awm"
   },
-  "license": {
-    "type": "MIT",
-    "url": "http://jonathanwiesel.mit-license.org/"
-  },
+  "license": "MIT",
   "bugs": "https://github.com/jonathanwiesel/awm/issues",
   "dependencies": {
     "adm-zip": "^0.4.4",
