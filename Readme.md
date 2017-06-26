@@ -90,3 +90,4 @@ Copyright (c) 2014 Jonathan Wiesel
 # Contributors :heart:
 
 * [claui](https://github.com/claui)
+* [@danielbayley](https://github.com/danielbayley)
