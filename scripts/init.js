@@ -1,13 +1,10 @@
 'use strict';
 
 var awm = require('../lib/awm');
-var fs = require('fs');
+var fs = require('fs-extra');
 
-if (!fs.existsSync(awm.config.directory)) {
-  fs.mkdirSync(awm.config.directory);
-  if(!fs.existsSync(awm.config.cacheDir)){
-    fs.mkdirSync(awm.config.cacheDir);
-  }
+if (!fs.existsSync(awm.config.cacheDir)) {
+  fs.mkdirpSync(awm.config.cacheDir);
 }
 
 awm.fetchAndParseManifest(function(jsManifest){
