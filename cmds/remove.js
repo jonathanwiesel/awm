@@ -6,6 +6,7 @@ module.exports = function(program) {
 
   program
     .command('remove <bundleID>')
+    .alias('rm')
     .description('Remove specified workflow.')
     .action(function(bundleID, options){
 

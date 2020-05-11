@@ -7,6 +7,7 @@ module.exports = function(program) {
 
   program
     .command('list')
+    .alias('ls')
     .description('List installed workflows.')
     .action(function(){
 
